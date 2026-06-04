@@ -1,7 +1,18 @@
+import { PiggyBank } from 'lucide-react';
+
+import { FormStep } from './FormStep';
+import { StepProgress } from './Progress';
+
 export function SimulationForm() {
   return (
-    <div>
-      <h1>Formulário de Simulação</h1>
-    </div>
+    <>
+      <StepProgress currentStep={6} totalSteps={10} />
+      <FormStep
+        icon={PiggyBank}
+        title="Renda mensal bruta"
+        question="Quanto é depositado na sua conta todo mês (somando todas as fontes)?"
+        inputProps={{ type: 'text', placeholder: 'ex: 5.000,00', prefix: 'R$' }}
+      />
+    </>
   );
 }
