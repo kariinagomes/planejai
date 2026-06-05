@@ -30,8 +30,8 @@ export function SimulationForm() {
     <>
       <StepProgress currentStep={currentStepIndex + 1} totalSteps={totalSteps} />
       <FormStep
-        key={currentStep.id}
         {...currentStep}
+        key={currentStep.id}
         onBack={handlePreviousStep}
         onNext={handleNextStep}
         hideBackButton={currentStepIndex === 0}
