@@ -9,12 +9,12 @@ import { StepProgress } from './Progress';
 
 export function SimulationForm() {
   const { saveFormData } = useSimulationStorage();
+  const navigate = useNavigate();
+
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [formData, setFormData] = useState<SimulationFormData>({} as SimulationFormData);
   const totalSteps = simulationFormSteps.length;
   const currentStep = simulationFormSteps[currentStepIndex];
-
-  const navigate = useNavigate();
 
   const handleNextStep = (value: string) => {
     const updatedFormData = { ...formData, [currentStep.id]: value };

@@ -58,32 +58,33 @@ export function FormStep({
         <Input
           {...inputProps}
           value={inputValue}
-          onChange={(e) => {
-            const isCurrency = inputProps.prefix === 'R$';
-            const value = e.target.value;
-            setInputValue(isCurrency ? formatCurrencyMask(value) : value);
-          }}
+          onChange={(e) =>
+            setInputValue(
+              inputProps.prefix === 'R$' ? formatCurrencyMask(e.target.value) : e.target.value
+            )
+          }
         />
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-6">
           {!hideBackButton && (
             <Button
               type="button"
               variant="ghost"
+              icon={ArrowLeft}
               className="order-2 flex-1 justify-center rounded-xl py-3 sm:order-1"
               onClick={onBack}
             >
-              <ArrowLeft size={16} />
               Voltar
             </Button>
           )}
           <Button
             type="submit"
             variant="primary"
+            icon={!submitButtonProps ? ArrowRight : undefined}
             className="order-1 flex-1 sm:order-2"
             disabled={!inputValue}
           >
             {submitButtonProps?.label ?? 'Próximo'}
-            {submitButtonProps?.emojiIcon ?? <ArrowRight size={16} />}
+            {submitButtonProps?.emojiIcon}
           </Button>
         </div>
       </form>
