@@ -23,6 +23,9 @@ importers:
       react-dom:
         specifier: ^19.2.6
         version: 19.2.7(react@19.2.7)
+      react-loading-skeleton:
+        specifier: ^3.5.0
+        version: 3.5.0(react@19.2.7)
       react-router-dom:
         specifier: ^7.16.0
         version: 7.16.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -1027,6 +1030,11 @@ packages:
     peerDependencies:
       react: ^19.2.7
 
+  react-loading-skeleton@3.5.0:
+    resolution: {integrity: sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+
   react-router-dom@7.16.0:
     resolution: {integrity: sha512-kMUAbimWB5FVbF4Bce4bJsiKJWLIUHq/mEG8+CFDnCSgltptBiG5nguducmsJeGKytlCvQud9Qhzpn49iduTlA==}
     engines: {node: '>=20.0.0'}
@@ -2014,6 +2022,10 @@ snapshots:
     dependencies:
       react: 19.2.7
       scheduler: 0.27.0
+
+  react-loading-skeleton@3.5.0(react@19.2.7):
+    dependencies:
+      react: 19.2.7
 
   react-router-dom@7.16.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
