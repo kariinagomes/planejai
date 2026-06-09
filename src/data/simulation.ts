@@ -81,5 +81,6 @@ export type SimulationFormData = Record<(typeof simulationFormSteps)[number]['id
 
 export type SimulationRecord = SimulationFormData & {
   id: string;
+  createdAt?: string;
   insight?: InsightData;
 };
