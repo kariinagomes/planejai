@@ -43,3 +43,14 @@ export const getInsight = async (prompt: string) => {
   const json = response.candidates[0].content.parts[0].text;
   return JSON.parse(json) as InsightData;
 };
+
+export const askQuestion = async (prompt: string) => {
+  const response = await callGeminiAPI(prompt);
+  const text = response.candidates?.[0]?.content?.parts?.[0]?.text;
+
+  if (!text) {
+    throw new Error('Resposta vazia da IA.');
+  }
+
+  return text.trim();
+};

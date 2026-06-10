@@ -33,15 +33,15 @@ function OrderedList({ items }: { items: string[] }) {
 const statusStyles = {
   viable: {
     label: 'Meta viável no prazo',
-    className: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+    className: 'bg-green-100 text-green-700',
   },
   needs_adjustment: {
     label: 'Ajuste necessário',
-    className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    className: 'bg-amber-100 text-amber-700',
   },
   unfeasible: {
     label: 'Meta inviável no prazo',
-    className: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+    className: 'bg-red-100 text-red-700',
   },
 };
 
@@ -49,7 +49,7 @@ export function Content({ insight }: ContentProps) {
   const status = statusStyles[insight.feasibility.status] ?? null;
 
   return (
-    <div className="lg:max-h-93 lg:scrollbar-thin lg:[scrollbar-color:var(--border)_transparent] lg:overflow-y-auto lg:pr-2">
+    <div className="border-border pb-4">
       <section className="flex flex-col gap-2">
         <div className="flex flex-col items-start gap-2 sm:flex-row">
           <span className="text-foreground text-sm font-semibold">🎯 Viabilidade da Meta</span>

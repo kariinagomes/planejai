@@ -1,7 +1,7 @@
 import { parseCurrency } from '@/utils/currency';
 import { calcMonthlySavings } from '@/utils/simulation';
 
-import type { SimulationRecord } from './simulation';
+import type { ChatExchange, SimulationRecord } from './simulation';
 
 const RESPONSE_SCHEMA = `{
   "feasibility": {
@@ -59,3 +59,40 @@ Regras:
   - "needs_adjustment": saldo negativo de até 20% do valor da economia mensal necessária
   - "unfeasible": saldo negativo superior a 20% do valor da economia mensal necessária`;
 }
+
+export function buildQuestionPrompt(
+  simulation: SimulationRecord,
+  question: string,
+  history: ChatExchange[]
+) {
+  const { income, expenses, debts, goalName, goalAmount, goalDeadline } = simulation;
+
+  const monthlySavings = calcMonthlySavings(simulation);
+  const monthlySavingsNeeded = parseCurrency(goalAmount) / parseInt(goalDeadline);
+
+  const historyText = history
+    .map((chat) => `Usuário: ${chat.question}\nIA: ${chat.answer}`)
+    .join('\n\n');
+
+  return `Você é um educador financeiro especializado em finanças pessoais. O usuário realizou uma simulação financeira com as seguintes informações:
+- Renda mensal bruta: ${income}
+- Custos fixos essenciais: ${expenses}
+- Dívidas e parcelas mensais: ${debts}
+- Valor disponível por mês: ${monthlySavings} reais
+- Meta: ${goalName}
+- Custo da meta: ${goalAmount}
+- Prazo desejado: ${goalDeadline} meses
+- Economia mensal necessária para atingir a meta no prazo: ${monthlySavingsNeeded} reais
+- Saldo após reserva para a meta: ${monthlySavings - monthlySavingsNeeded} reais
+
+O diagnóstico inicial gerado foi:
+${simulation.insight ? JSON.stringify(simulation.insight) : 'Não gerado'}
+
+Histórico da conversa:
+${historyText || 'Nenhuma pergunta feita ainda.'}
+
+Responda à seguinte pergunta do usuário de forma clara, objetiva, amigável e direta, em português do Brasil, em segunda pessoa ("você"). Não use JSON, retorne apenas a resposta em formato de texto comum (pode usar parágrafos e quebras de linha se necessário, sem formatação markdown complexa ou blocos de código).
+
+Pergunta: "${question}"`;
+}
+

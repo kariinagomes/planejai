@@ -79,8 +79,16 @@ export const simulationFormSteps = [
 
 export type SimulationFormData = Record<(typeof simulationFormSteps)[number]['id'], string>;
 
+export interface ChatExchange {
+  id: string;
+  question: string;
+  answer: string;
+  createdAt: string;
+}
+
 export type SimulationRecord = SimulationFormData & {
   id: string;
   createdAt?: string;
   insight?: InsightData;
+  conversations?: ChatExchange[];
 };
