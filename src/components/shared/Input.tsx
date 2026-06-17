@@ -17,7 +17,7 @@ export function Input({ prefix, suffix, ...rest }: InputProps) {
         </>
       )}
       <input
-        className="text-foreground placeholder:text-muted-foreground w-full bg-transparent text-sm outline-none"
+        className="text-foreground w-full bg-transparent text-sm outline-none"
         autoFocus
         {...rest}
       />
