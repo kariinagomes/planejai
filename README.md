@@ -20,3 +20,8 @@ Além disso, também foi implementada a funcionalidade de "conversar" com o educ
 | **@fontsource/inter** | Fonte Inter auto-hospedada |
 | **lucide-react** | Biblioteca de ícones SVG |
 | **react-loading-skeleton** | Skeletons de carregamento |
+
+### Demo
+<img width="1916" height="864" alt="educador-financeiro" src="https://github.com/user-attachments/assets/c3ae8705-aa02-421b-83bc-1e21508e70d7" />
+
+
